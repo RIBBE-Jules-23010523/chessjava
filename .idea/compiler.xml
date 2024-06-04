@@ -9,5 +9,13 @@
         <module name="echecsae" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="demo" target="21" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="echecsae" options="--add-exports javafx.graphics/com.sun.glass.ui=com.example.echecsae" />
+    </option>
   </component>
 </project>
