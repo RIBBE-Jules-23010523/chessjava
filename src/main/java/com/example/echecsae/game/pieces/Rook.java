@@ -5,12 +5,10 @@ public class Rook extends Piece {
         super(name, color, pieceColor, locationX, locationY);
     }
 
-    //@Override
     public boolean isValidMove(int x, int y) {
         return (x == locationX || y == locationY);
     }
 
-    //@Override
     public boolean isValidAttack(int x, int y) {
         return isValidMove(x, y);
     }

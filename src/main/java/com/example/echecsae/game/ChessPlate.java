@@ -10,6 +10,7 @@ public class ChessPlate {
 
     private VBox board;
     private Piece[][] posPiece;
+    public Piece selectedPiece; // Variable pour mémoriser la pièce sélectionnée
 
     public ChessPlate() {
         board = new VBox();
@@ -68,10 +69,13 @@ public class ChessPlate {
                     pieceView.setUserData(piece);
                     square.getChildren().add(pieceView);
 
-                    // Ajout d'un gestionnaire d'événements pour le clic
+                    // Ajout d'un gestionnaire d'événements pour detecter le clic sur une pièce
                     square.setOnMouseClicked(event -> {
-                        Piece selectedPiece = (Piece) pieceView.getUserData();
+                        selectedPiece = (Piece) pieceView.getUserData(); // Mémorisation de la pièce sélectionnée
                         System.out.println("Piece selected at: " + selectedPiece.locationX + ", " + selectedPiece.locationY);
+                        System.out.println("Piece selected: " + selectedPiece.name);
+                        String color = (selectedPiece.pieceColor == 0) ? "white" : "black";
+                        System.out.println("Piece color: " + color + "\n");
                     });
                 }
             }
