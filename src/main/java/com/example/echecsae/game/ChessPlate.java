@@ -54,7 +54,6 @@ public class ChessPlate {
 
         updateBoard();
     }
-//
     private void updateBoard() {
         for (int i = 0; i < 8; i++) {
             HBox row = (HBox) board.getChildren().get(i);
@@ -68,9 +67,15 @@ public class ChessPlate {
                     pieceView.setFitHeight(90);
                     pieceView.setUserData(piece);
                     square.getChildren().add(pieceView);
+
+                    // Ajout d'un gestionnaire d'événements pour le clic
+                    square.setOnMouseClicked(event -> {
+                        Piece selectedPiece = (Piece) pieceView.getUserData();
+                        System.out.println("Piece selected at: " + selectedPiece.locationX + ", " + selectedPiece.locationY);
+                    });
                 }
             }
         }
     }
-
 }
+
