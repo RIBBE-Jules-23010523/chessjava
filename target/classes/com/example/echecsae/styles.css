@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.body{
+    -fx-background-color: #302E2B;
+}
+
+.play_button{
+    -fx-background-color: #81b64c;
+    -fx-text-fill: #d2d2d2;
+    -fx-border-radius: 10;
+    -fx-padding: 0 120 0 120;
+    -fx-font-size: 30 ;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.3), 10, 0, 0, 0);
+    -fx-font-family: "Montserrat";
+    -fx-font-size: 22;
+    -fx-font-weight: 700;
+    -fx-min-width: 150;
+    -fx-min-height: 60;
+}
+
+.play_button:hover {
+    -fx-background-color: #a3d160;
+    -fx-text-fill: #d2d2d2;
+    -fx-cursor: hand;
+}
+
+.mode_button{
+    -fx-background-color: #1E1E1B;
+    -fx-text-fill: #d2d2d2;
+    -fx-border-radius: 10;
+    -fx-padding: 0 80 0 80;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.3), 10, 0, 0, 0);
+    -fx-font-family: "Montserrat";
+    -fx-font-weight: 700;
+    -fx-font-size: 22;
+    -fx-min-width: 150;
+    -fx-min-height: 60;
+
+}
+
+.mode_button:hover{
+    -fx-background-color: #151515;
+    -fx-text-fill: #d2d2d2;
+    -fx-cursor: hand;
+}
+
+.left_box{
+    -fx-background-color: #262522;
+}
+
+.Menu{
+    -fx-background-color: #494846;
+    -fx-text-fill: #d2d2d2;
+    -fx-justify-content: center;
+    -fx-border-radius: 10;
+    -fx-font-size: 12;
+    -fx-min-width: 150;
+    -fx-min-height: 60;
+}
+
+.personnage{
+    -fx-text-fill: d2d2d2;
+}
+
+
+.temps{
+    -fx-background-color: #3C3B39;
+    -fx-text-fill: #d2d2d2;
+    -fx-border-radius: 10;
+    -fx-padding: 0 80 0 80;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.3), 10, 0, 0, 0);
+    -fx-font-family: "Montserrat";
+    -fx-font-weight: 700;
+    -fx-font-size: 22;
+    -fx-min-width: 150;
+    -fx-min-height: 60;
+}
+
+.temps:hover{
+    -fx-background-color: #535353;
+    -fx-text-fill: #d2d2d2;
+    -fx-cursor: hand;
+}
+
+.titre_onglet:hover{
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
+
+.window{
+    -fx-background-color: #1d1e1b;
+}
+
+.temps .label{
+    -fx-text-fill: #FFFFFF;
+}
+
+.temps .context-menu{
+    -fx-background-color: #1E1E1B;
+}
+
+.timer {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #1E1E1B;
+    -fx-font-weight: 700;
+    -fx-font-size: 22;
+    -fx-min-width: 150;
+    -fx-min-height: 40;
+}
+
+.titre_onglet{
+    -fx-text-fill: #d2d2d2;
+}

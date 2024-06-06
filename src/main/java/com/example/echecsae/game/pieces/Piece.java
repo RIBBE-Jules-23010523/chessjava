@@ -2,6 +2,8 @@ package com.example.echecsae.game.pieces;
 
 import javafx.scene.image.Image;
 
+import java.net.URL;
+
 public class Piece {
 
     public int pieceColor;
@@ -14,11 +16,17 @@ public class Piece {
 
     public Piece(String name, String color, int pieceColor, int x, int y) {
         this.pieceColor = pieceColor;
-        this.locationX = x;
-        this.locationY = y;
+        this.locationY = x;
+        this.locationX = y;
         this.name = name;
-        String imagePath = String.format("/%s_%s.png", name, color);
-        image = new Image(getClass().getResource(imagePath).toString());
+        String imagePath = String.format("/com/example/echecsae/piece/%s_%s.png", name, color);
+        URL imageURL = getClass().getResource(imagePath);
+        if (imageURL != null) {
+            image = new Image(imageURL.toString());
+        } else {
+            System.err.println("Image not found: " + imagePath);
+        }
+
     }
 
 
@@ -26,4 +34,7 @@ public class Piece {
         return image;
     }
 
+    public boolean isValidMove(int i, int j) {
+        return false;
+    }
 }

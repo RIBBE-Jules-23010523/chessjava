@@ -56,7 +56,7 @@
                     </ImageView>
                     <Label styleClass="titre_onglet">Nouvelle partie</Label>
                 </VBox>
-                <VBox fx:id="games" alignment="CENTER" styleClass="window" style="-fx-padding: 20 45 20 45" onMouseClicked="#handleGamesClick">
+                <VBox fx:id="games" alignment="CENTER" styleClass="window" style="-fx-padding: 20 45 20 45" >
                     <ImageView fitWidth="30" fitHeight="30" styleClass="window_icon">
                         <Image url="@./piece/games.png"/>
                     </ImageView>
@@ -69,27 +69,6 @@
                     <Label styleClass="titre_onglet">Joueurs</Label>
                 </VBox>
             </HBox>
-            <VBox spacing="15" alignment="CENTER" style="-fx-padding: 20 0 0 0">
-                <ChoiceBox value="10 min" fx:id="temps" styleClass="temps">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="5 min" />
-                            <String fx:value="10 min" />
-                            <String fx:value="15 min" />
-                        </FXCollections>
-                    </items>
-                </ChoiceBox>
-                <Button fx:id="play_button" styleClass="play_button" text="Jouer"/>
-                <VBox style="-fx-padding: 100 0 0 -10" alignment="CENTER">
-                    <Button fx:id="mode_button" styleClass="mode_button" text="Tournois">
-                        <graphic>
-                            <ImageView styleClass="medaille" fitHeight="30" fitWidth="30">
-                                <Image fx:id="medaille" url="@./piece/tournaments.png"/>
-                            </ImageView>
-                        </graphic>
-                    </Button>
-                </VBox>
-            </VBox>
         </VBox>
     </right>
 </BorderPane>
