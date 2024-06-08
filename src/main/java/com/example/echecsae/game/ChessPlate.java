@@ -32,8 +32,8 @@ public class ChessPlate {
             HBox row = new HBox();
             for (int j = 0; j < 8; j++) {
                 StackPane square = new StackPane();
-                square.setMinHeight(100);
-                square.setMinWidth(100);
+                square.setMinHeight(80);
+                square.setMinWidth(80);
                 if ((i + j) % 2 == 0) {
                     square.setStyle("-fx-background-color: #EEEED5");
                 } else {
@@ -95,8 +95,8 @@ public class ChessPlate {
                 Piece piece = posPiece[i][j];
                 if (piece != null) {
                     ImageView pieceView = new ImageView(piece.getImagePiece());
-                    pieceView.setFitWidth(90);
-                    pieceView.setFitHeight(90);
+                    pieceView.setFitWidth(65);
+                    pieceView.setFitHeight(65);
                     pieceView.setUserData(piece);
                     square.getChildren().add(pieceView);
                 }
