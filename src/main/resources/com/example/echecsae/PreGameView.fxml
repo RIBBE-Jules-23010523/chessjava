@@ -18,6 +18,7 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TextField?>
 <BorderPane styleClass="body" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.echecsae.ChessController" stylesheets="@styles.css">
     <padding>
         <Insets bottom="20.0" left="10.0" right="20.0" top="10.0"/>
@@ -26,7 +27,7 @@
         <VBox style="-fx-padding: 0 20 0 0">
             <HBox style="-fx-padding: 0 10 10 0" spacing="10">
                 <ImageView fitHeight="35" fitWidth="35">
-                    <Image fx:id="coach" url="@./piece/coach.png" />
+                    <Image fx:id="j2pdp" url="@./piece/coach.png" />
                 </ImageView>
                 <children>
                     <Label fx:id="joueur2" text="Joueur 2" styleClass="personnage"/>
@@ -37,7 +38,7 @@
             <AnchorPane fx:id="chessContainer" xmlns:fx="http://javafx.com/fxml/1"/>
             <HBox style="-fx-padding: 10 10 10 0" spacing="10">
                 <ImageView fitHeight="35" fitWidth="35">
-                    <Image fx:id="manuel" url="@./piece/manuel.png" />
+                    <Image fx:id="j1pdp" url="@./piece/manuel.png" />
                 </ImageView>
                 <children>
                     <Label fx:id="joueur1" text="Joueur 1" styleClass="personnage"/>
@@ -56,13 +57,13 @@
                     </ImageView>
                     <Label styleClass="titre_onglet">Nouvelle partie</Label>
                 </VBox>
-                <VBox fx:id="games" alignment="CENTER" styleClass="window" style="-fx-padding: 20 45 20 45" onMouseClicked="#handleGamesClick">
+                <VBox fx:id="games" alignment="CENTER" styleClass="window" style="-fx-padding: 20 45 20 45">
                     <ImageView fitWidth="30" fitHeight="30" styleClass="window_icon">
                         <Image url="@./piece/games.png"/>
                     </ImageView>
                     <Label styleClass="titre_onglet">Parties</Label>
                 </VBox>
-                <VBox fx:id="players" alignment="CENTER" styleClass="window" style="-fx-padding: 20 45 20 45" onMouseClicked="#handlePlayersClick">
+                <VBox fx:id="players" alignment="CENTER" styleClass="window" style="-fx-padding: 20 45 20 45">
                     <ImageView fitHeight="30" fitWidth="30" styleClass="window_icon">
                         <Image url="@./piece/players.png"/>
                     </ImageView>
@@ -70,16 +71,15 @@
                 </VBox>
             </HBox>
             <VBox spacing="15" alignment="CENTER" style="-fx-padding: 20 0 0 0">
-                <ChoiceBox value="10 min" fx:id="temps" styleClass="temps">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="5 min" />
-                            <String fx:value="10 min" />
-                            <String fx:value="15 min" />
-                        </FXCollections>
-                    </items>
-                </ChoiceBox>
-                <Button fx:id="play_button" styleClass="play_button" text="Jouer" onMouseClicked="#handlePreGameClick"/>
+                <HBox alignment="CENTER" spacing="10">
+                    <Label styleClass="j_name" text="Joueur 1"/>
+                    <TextField fx:id="j_name1"/>
+                </HBox>
+                <HBox alignment="CENTER" spacing="10">
+                    <Label styleClass="j_name" text="Joueur 2"/>
+                    <TextField fx:id="j_name2"/>
+                </HBox>
+                <Button fx:id="play_button" styleClass="play_button" text="Jouer" onMouseClicked="#handleNameUpdateClick"/>
                 <VBox style="-fx-padding: 100 0 0 -10" alignment="CENTER">
                     <Button fx:id="mode_button" styleClass="mode_button" text="Tournois">
                         <graphic>

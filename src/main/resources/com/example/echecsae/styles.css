@@ -111,3 +111,7 @@
 .titre_onglet{
     -fx-text-fill: #d2d2d2;
 }
+
+.j_name{
+    -fx-text-fill: #ffffff;
+}
