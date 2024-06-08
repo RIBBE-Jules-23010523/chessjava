@@ -6,18 +6,27 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+/**
+ * Cette classe représente l'échiquier du jeu d'échecs.
+ */
 public class ChessPlate {
 
     private final VBox board;
     private Piece[][] posPiece;
-    public Piece selectedPiece; // Variable pour mémoriser la pièce sélectionnée
+    public Piece selectedPiece;
 
+    /**
+     * Constructeur de la classe ChessPlate.
+     */
     public ChessPlate() {
         board = new VBox();
         createBoard();
         placePieces();
     }
-    //Création de l'échiquier
+
+    /**
+     * Cette méthode crée l'échiquier.
+     */
     private void createBoard() {
         for (int i = 0; i < 8; i++) {
             HBox row = new HBox();
@@ -36,31 +45,47 @@ public class ChessPlate {
         }
     }
 
+    /**
+     * Cette méthode retourne l'échiquier.
+     * @return l'échiquier.
+     */
     public VBox getBoard() {
         return board;
     }
 
-    //Permet de placer les pièces sur l'échiquier avec le format suivant: new ClasseDeLaPiece{nom, couleur, x, y} (nom et couleurs permettent de sélectionner la bonne image
+    /**
+     * Cette méthode place les pièces sur l'échiquier.
+     * Les pièces sont placées dans un tableau bidimensionnel.
+     * Les cases vides sont représentées par la valeur null.
+     */
     public void placePieces() {
         posPiece = new Piece[][]{
-                {new Rook("rook", "black", 1, 0, 0), new Knight("knight", "black", 1, 1, 0), new Bishop("bishop", "black", 1, 2, 0), new Queen("queen", "black", 1, 3, 0), new King("king", "black", 1, 4, 0), new Bishop("bishop", "black", 1, 5, 0), new Knight("knight", "black", 1, 6, 0), new Rook("rook", "black", 1, 7, 0)},
-                {/*new Pawn("pawn", "black", 1, 0, 1)*/null, new Pawn("pawn", "black", 1, 1, 1), new Pawn("pawn", "black", 1, 2, 1), new Pawn("pawn", "black", 1, 3, 1), new Pawn("pawn", "black", 1, 4, 1), new Pawn("pawn", "black", 1, 5, 1), new Pawn("pawn", "black", 1, 6, 1), new Pawn("pawn", "black", 1, 7, 1)},
-                {null, null, null, null, null, null, null, null},
-                {new Rook("rook", "white", 0,0,3), null, null, null, null, null, null, null},
+                {new Rook("rook", "black", 1, 0, 0), new Knight("knight", "black", 1, 0, 1), new Bishop("bishop", "black", 1, 0, 2), new Queen("queen", "black", 1, 0, 3), new King("king", "black", 1, 0, 4), new Bishop("bishop", "black", 1, 0, 5), new Knight("knight", "black", 1, 0, 6), new Rook("rook", "black", 1, 0, 7)},
+                {new Pawn("pawn", "black", 1, 1, 0), new Pawn("pawn", "black", 1, 1, 1), new Pawn("pawn", "black", 1, 1, 2), new Pawn("pawn", "black", 1, 1, 3), new Pawn("pawn", "black", 1, 1, 4), new Pawn("pawn", "black", 1, 1, 5), new Pawn("pawn", "black", 1, 1, 6), new Pawn("pawn", "black", 1, 1, 7)},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
-                {/*new Pawn("pawn", "white", 0, 0, 6)*/null, new Pawn("pawn", "white", 0, 1, 6), new Pawn("pawn", "white", 0, 2, 6), new Pawn("pawn", "white", 0, 3, 6), new Pawn("pawn", "white", 0, 4, 6), new Pawn("pawn", "white", 0, 5, 6), new Pawn("pawn", "white", 0, 6, 6), new Pawn("pawn", "white", 0, 7, 6)},
-                {new Rook("rook", "white", 0, 0, 7), new Knight("knight", "white", 0, 1, 7), new Bishop("bishop", "white", 0, 2, 7), new Queen("queen", "white", 0, 3, 7), new King("king", "white", 0, 4, 7), new Bishop("bishop", "white", 0, 5, 7), new Knight("knight", "white", 0, 6, 7), new Rook("rook", "white", 0, 7, 7)}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {new Pawn("pawn", "white", 0, 6, 0), new Pawn("pawn", "white", 0, 6, 1), new Pawn("pawn", "white", 0, 6, 2), new Pawn("pawn", "white", 0, 6, 3), new Pawn("pawn", "white", 0, 6, 4), new Pawn("pawn", "white", 0, 6, 5), new Pawn("pawn", "white", 0, 6, 6), new Pawn("pawn", "white", 0, 6, 7)},
+                {new Rook("rook", "white", 0, 7, 0), new Knight("knight", "white", 0, 7, 1), new Bishop("bishop", "white", 0, 7, 2), new Queen("queen", "white", 0, 7, 3), new King("king", "white", 0, 7, 4), new Bishop("bishop", "white", 0, 7, 5), new Knight("knight", "white", 0, 7, 6), new Rook("rook", "white", 0, 7, 7)}
         };
 
         updateBoard();
     }
 
+    /**
+     * Cette méthode retourne la pièce à une position donnée.
+     * @param x la position x de la pièce.
+     * @param y la position y de la pièce.
+     * @return la pièce à la position donnée.
+     */
     public Piece getPiece(int x, int y) {
         return posPiece[x][y];
     }
 
-
+    /**
+     * Cette méthode met à jour l'échiquier.
+     */
     private void updateBoard() {
         for (int i = 0; i < 8; i++) {
             HBox row = (HBox) board.getChildren().get(i);
@@ -76,7 +101,6 @@ public class ChessPlate {
                     square.getChildren().add(pieceView);
                 }
 
-                // Ajout d'un gestionnaire d'événements pour détecter le clic sur une case
                 int finalJ = j;
                 int finalI = i;
                 square.setOnMouseClicked(event -> handleSquareClick(finalI, finalJ));
@@ -84,40 +108,77 @@ public class ChessPlate {
         }
     }
 
+    /**
+     * Cette méthode gère le clic sur une case de l'échiquier.
+     * @param j la position x de la case.
+     * @param i la position y de la case.
+     */
     private void handleSquareClick(int i, int j) {
         Piece piece = posPiece[i][j];
-
         if (selectedPiece == null) {
-            // Premier clic : sélection de la pièce
             if (piece != null) {
-                selectedPiece = piece; // Mémorisation de la pièce sélectionnée
-                System.out.println("Piece selected at: " + selectedPiece.locationX + ", " + selectedPiece.locationY);
-                System.out.println("Piece selected: " + selectedPiece.name);
-                String color = (selectedPiece.pieceColor == 0) ? "white" : "black";
-                System.out.println("Piece color: " + color + "\n");
+                selectedPiece = piece;
+                clearHighlights();
+                highlightValidMoves(selectedPiece);
             }
         } else {
-            // Deuxième clic : vérification du mouvement et déplacement de la pièce
-            if (piece == null && selectedPiece.isValidMove(i, j)) {
-                System.out.println("The move is valid.");
-                // Supprimer l'instance de la pièce de sa position actuelle
-                posPiece[selectedPiece.locationX][selectedPiece.locationY] = null;
-                // Mettre à jour les coordonnées de la pièce
-                selectedPiece.locationX = j;
-                selectedPiece.locationY = i;
-                // Ajouter la pièce aux nouvelles coordonnées
-                posPiece[i][j] = selectedPiece;
-                // Mettre à jour le plateau
-                updateBoard();
-                // Réinitialiser la pièce sélectionnée
+            if (piece == selectedPiece) {
+                // Si la même pièce est cliquée à nouveau, annuler la sélection
                 selectedPiece = null;
+                clearHighlights();
+            } else if (piece != null && selectedPiece.isSameColor(piece)) {
+                selectedPiece = piece;
+                clearHighlights();
+                highlightValidMoves(selectedPiece);
             } else {
-                System.out.println("The move is not valid.");
-                // Réinitialiser la pièce sélectionnée
-                selectedPiece = null;
+                int[][] validMoves = selectedPiece.validMoves(this);
+                boolean isValid = false;
+                for (int[] move : validMoves) {
+                    if (move[0] == i && move[1] == j) {
+                        isValid = true;
+                        break;
+                    }
+                }
+                if (isValid) {
+                    posPiece[selectedPiece.getX()][selectedPiece.getY()] = null;
+                    selectedPiece.setX(i);
+                    selectedPiece.setY(j);
+                    posPiece[i][j] = selectedPiece;
+                    selectedPiece = null;
+                    clearHighlights();
+                    updateBoard();
+                }
+            }
+        }
+        System.out.println("Piece selected: " + (selectedPiece != null ? selectedPiece.toString() : "None"));
+        System.out.println("Piece at: " + i + ", " + j);
+    }
+
+    private void highlightValidMoves(Piece piece) {
+        if (piece == null) return;
+
+        int[][] validMoves = piece.validMoves(this);
+        for (int[] move : validMoves) {
+            int i = move[0];
+            int j = move[1];
+            StackPane square = (StackPane) ((HBox) board.getChildren().get(i)).getChildren().get(j);
+            square.setStyle("-fx-background-color: #f4f67f");
+        }
+        StackPane selectedSquare = (StackPane) ((HBox) board.getChildren().get(piece.getX())).getChildren().get(piece.getY());
+        selectedSquare.setStyle("-fx-background-color: #bdcc3c");
+    }
+
+    private void clearHighlights() {
+        for (int i = 0; i < 8; i++) {
+            HBox row = (HBox) board.getChildren().get(i);
+            for (int j = 0; j < 8; j++) {
+                StackPane square = (StackPane) row.getChildren().get(j);
+                if ((i + j) % 2 == 0) {
+                    square.setStyle("-fx-background-color: #EEEED5");
+                } else {
+                    square.setStyle("-fx-background-color: #7D945D");
+                }
             }
         }
     }
-
 }
-
