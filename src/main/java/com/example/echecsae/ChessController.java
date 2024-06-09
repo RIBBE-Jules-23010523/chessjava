@@ -35,9 +35,13 @@ public class ChessController {
     private Button play_button;
 
     @FXML
+    private Label winnerLabel;
+
+    @FXML
     public void initialize() {
-        chessPlate = new ChessPlate();
+        chessPlate = new ChessPlate(this);
         chessContainer.getChildren().add(chessPlate.getBoard());
+        winnerLabel.setText("");
     }
 
     @FXML
@@ -103,6 +107,11 @@ public class ChessController {
         joueur2.setText(j_name2.getText());
 
         play_button.setDisable(true);
+    }
+
+    // when ChessPlate.gameOver is true, this method is called
+    public void endGame(String winner) {
+        winnerLabel.setText(winner);
     }
 
 }

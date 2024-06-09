@@ -115,3 +115,9 @@
 .j_name{
     -fx-text-fill: #ffffff;
 }
+
+#winnerLabel {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20;
+    -fx-font-weight: 700;
+}

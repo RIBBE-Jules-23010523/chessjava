@@ -120,7 +120,13 @@ public abstract class Piece {
     public abstract boolean isValidMove(int x, int y);
 
     public int getPieceColor() {
-        return pieceColor;
+        if (couleur == 0) {
+            pieceColor = 0;
+            return pieceColor;
+        } else {
+            pieceColor = 1;
+            return pieceColor;
+        }
     }
 }
 

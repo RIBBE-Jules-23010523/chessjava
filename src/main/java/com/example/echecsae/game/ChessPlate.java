@@ -1,6 +1,9 @@
 package com.example.echecsae.game;
 
+import com.example.echecsae.ChessController;
 import com.example.echecsae.game.pieces.*;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -10,16 +13,21 @@ import javafx.scene.layout.VBox;
  * Cette classe représente l'échiquier du jeu d'échecs.
  */
 public class ChessPlate {
-
+    private int tour;
     private final VBox board;
     private Piece[][] posPiece;
     public Piece selectedPiece;
+    private boolean gameOver = false;
+    private ChessController controller;
+
 
     /**
      * Constructeur de la classe ChessPlate.
      */
-    public ChessPlate() {
+    public ChessPlate(ChessController controller) {
+        this.controller = controller;
         board = new VBox();
+        tour = 0;
         createBoard();
         placePieces();
     }
@@ -113,20 +121,25 @@ public class ChessPlate {
      * @param j la position x de la case.
      * @param i la position y de la case.
      */
+
     private void handleSquareClick(int i, int j) {
+        if (gameOver) {
+            return;
+        }
+
         Piece piece = posPiece[i][j];
         if (selectedPiece == null) {
-            if (piece != null) {
+            if (piece != null && piece.getColor() == tour) {
                 selectedPiece = piece;
                 clearHighlights();
                 highlightValidMoves(selectedPiece);
             }
         } else {
-            if (piece == selectedPiece) {
+            if (piece == selectedPiece && selectedPiece.getColor() == tour) {
                 // Si la même pièce est cliquée à nouveau, annuler la sélection
                 selectedPiece = null;
                 clearHighlights();
-            } else if (piece != null && selectedPiece.isSameColor(piece)) {
+            } else if (piece != null && selectedPiece.isSameColor(piece) && selectedPiece.getColor() == tour) {
                 selectedPiece = piece;
                 clearHighlights();
                 highlightValidMoves(selectedPiece);
@@ -139,7 +152,12 @@ public class ChessPlate {
                         break;
                     }
                 }
-                if (isValid) {
+                if (isValid && selectedPiece.getColor() == tour) {
+                    if (piece != null && piece.toString().equals("King")) {
+                        System.out.println("Le roi a été mangé. Fin du jeu.");
+                        controller.endGame(tour == 0 ? "Les blancs ont gagné ! " : "Les noirs ont gagné !");
+                        gameOver = true;
+                    }
                     posPiece[selectedPiece.getX()][selectedPiece.getY()] = null;
                     selectedPiece.setX(i);
                     selectedPiece.setY(j);
@@ -147,6 +165,8 @@ public class ChessPlate {
                     selectedPiece = null;
                     clearHighlights();
                     updateBoard();
+                    // Changer le tour
+                    tour = (tour == 0) ? 1 : 0;
                 }
             }
         }

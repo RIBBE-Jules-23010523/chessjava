@@ -31,6 +31,7 @@ public class Pawn extends Piece {
 
         // Déterminer la direction du mouvement: les pions blancs se déplacent vers le haut (-1), les noirs vers le bas (+1)
         int direction = (getPieceColor() == 0) ? -1 : 1;
+        System.out.println(getPieceColor());
 
         // Mouvement d'une case vers l'avant
         if (isWithinBounds(getX() + direction, getY()) && board.getPiece(getX() + direction, getY()) == null) {
@@ -48,7 +49,6 @@ public class Pawn extends Piece {
             }
         }
 
-        // Captures diagonales
         int[] diagonalMoves = {-1, 1};
         for (int dy : diagonalMoves) {
             int x = getX() + direction;

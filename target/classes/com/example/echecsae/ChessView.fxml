@@ -89,6 +89,7 @@
                         </graphic>
                     </Button>
                 </VBox>
+                <Label fx:id="winnerLabel" styleClass="winner" text="Joueur 1 a gagné"/>
             </VBox>
         </VBox>
     </right>
