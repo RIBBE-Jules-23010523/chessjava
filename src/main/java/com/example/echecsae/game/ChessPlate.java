@@ -121,7 +121,6 @@ public class ChessPlate {
      * @param j la position x de la case.
      * @param i la position y de la case.
      */
-
     private void handleSquareClick(int i, int j) {
         if (gameOver) {
             return;
